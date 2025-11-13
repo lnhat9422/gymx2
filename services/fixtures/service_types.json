@@ -1,0 +1,53 @@
+[
+  {
+    "model": "services.servicetype",
+    "pk": 1,
+    "fields": {
+      "type": "yoga",
+      "title": "Yoga GymX",
+      "description": "Chúng tôi mang đến cho bạn một không gian tập luyện yoga hoàn hảo để thư giãn, nâng cao sức khỏe và tinh thần. Với không gian yên tĩnh, thoáng đãng, được thiết kế tỉ mỉ và trang bị đầy đủ các dụng cụ hỗ trợ, bạn sẽ cảm thấy thoải mái và tập trung tối đa vào từng động tác.\n\nĐội ngũ giáo viên yoga chuyên nghiệp sẽ giúp bạn khám phá những lợi ích tuyệt vời của yoga như cải thiện sức khỏe thể chất, giảm stress, tăng cường sự tập trung và tìm kiếm sự bình yên nội tâm.",
+      "button_text": "Trải Nghiệm Miễn Phí"
+    }
+  },
+  {
+    "model": "services.servicetype",
+    "pk": 2,
+    "fields": {
+      "type": "gym",
+      "title": "GymX Fitness",
+      "description": "GymX là một trong những thương hiệu phòng tập gym 5 sao với thiết bị tập luyện hiện đại nằm ở trung tâm Đà Nẵng. Phòng tập gym GymX được xây dựng với mục đích mang lại một môi trường tập luyện chuyên nghiệp, hiện đại và đầy đủ các dịch vụ cho người tập. Với phương châm “Tập luyện – Sức khỏe – Niềm vui”.\n\nPhòng tập gym GymX – Nơi kiến tạo vóc dáng hoàn hảo cho bạn. Hãy đến và cảm nhận sự khác biệt.",
+      "button_text": "Trải nghiệm miễn phí"
+    }
+  },
+  {
+    "model": "services.servicetype",
+    "pk": 3,
+    "fields": {
+      "type": "dance",
+      "title": "Dance GymX",
+      "description": "Bạn đang tìm kiếm một không gian để đốt cháy calo, tăng cường sức bền và có những buổi tập luyện đạp xe sảng khoái? GymX chính là điểm đến hoàn hảo cho bạn!\n\nĐược tận luyện cùng với các huyến luyện viên nhiệt tình và chuyên nghiệp, cùng với âm nhạc sôi động và không gian tập luyện rộng rãi, thoáng mát, GymX sẽ mang đến cho bạn những trải nghiệm tuyệt vời nhất.\n\nĐến với GymX để đạt được mục tiêu tập luyện một cách hiệu quả và an toàn.",
+      "button_text": "Trải nghiệm miễn phí"
+    }
+  },
+  {
+  "model": "services.servicesection",
+  "pk": 1,
+  "fields": {
+    "service_type": 2,
+    "title": "Thiết bị nhập khẩu hiện đại",
+    "description": "Tận hưởng cảm giác tập luyện chuyên nghiệp với hệ thống máy móc nhập khẩu cao cấp từ các thương hiệu nổi tiếng...",
+    "order": 1
+  }
+},
+{
+  "model": "services.servicesection",
+  "pk": 2,
+  "fields": {
+    "service_type": 2,
+    "title": "Không gian đẳng cấp",
+    "description": "Phòng tập GymX được thiết kế hiện đại, không gian thoáng đãng với ánh sáng tự nhiên...",
+    "order": 2
+  }
+}
+
+]

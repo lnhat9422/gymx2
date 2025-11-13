@@ -1,0 +1,226 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}GymX - Phòng Tập Chất Lượng Nhất Việt Nam{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .custom-navbar {
+    border-bottom: 1px solid #eee;      /* Đường viền mỏng phía dưới */
+    min-height: 60px; /* Đặt chiều cao mong muốn (ví dụ: 80px) */
+    padding-top: 0;   /* Loại bỏ padding-top mặc định */
+    padding-bottom: 0; /* Loại bỏ padding-bottom mặc định */
+    display: flex;     /* Kích hoạt flexbox để căn giữa */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    }
+    .custom-logo {
+        height: 60px; /* Chiều cao mong muốn của logo (thay đổi nếu cần) */
+        width: auto; /* Giữ tỷ lệ */
+        transition: height 0.3s; /* Thêm hiệu ứng chuyển đổi mượt mà */
+    }
+
+
+    /* 2. CĂN ĐỀU CÁC MỤC Ở GIỮA GIỐNG ẢNH MẪU */
+    .custom-navbar .navbar-nav {
+        width: 70%; /* Đảm bảo nav chiếm toàn bộ chiều rộng có thể */
+        display: flex;
+        justify-content: space-evenly; /* Căn đều khoảng cách giữa các mục */
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+
+    /* Tùy chọn: Làm các mục menu đậm hơn */
+    .custom-navbar .nav-link {
+        font-weight: 500;
+        font-size: 1.05rem;
+    }
+        .btn-outline-red {
+    background-color: black; /* Nền trong suốt hoặc nền trắng */
+    color: white;             /* Chữ màu đỏ */
+    border: 2px solid black;  /* Khung viền màu đỏ dày 2px */
+
+    padding: 10px 20px;
+    border-radius: 50px;        /* Góc bo tròn giống như ảnh mẫu */
+    text-transform: uppercase;
+    transition: all 0.3s ease;}
+    .btn-outline-red:hover {
+    background-color: white;  /* Khi di chuột vào (hover), nền chuyển sang đỏ */
+    color: black;             /* Chữ chuyển sang trắng */}
+
+        .custom-navbar .navbar-nav .nav-item .nav-link:hover {
+    color: black !important; /* Đổi màu chữ sang đen */
+    background-color: transparent !important; /* Đảm bảo không có nền nào xuất hiện */}
+        .hero-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+    transition: transform 10s ease;
+  }
+  .hero-section:hover .hero-bg {
+    transform: scale(1.1);
+  }
+  .hero-overlay {
+    z-index: 1;
+  }
+  .hero-section > .container {
+    z-index: 2;
+  }
+    </style>
+
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top custom-navbar" style="background-color: #c11325;">
+    {% block header %}
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">
+    <img src="{% static 'images/gymx_logo6.png' %}" alt="GymX Logo" class="custom-logo" >
+    </a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-light" href="{% url 'home' %}">Trang Chủ</a></li>
+<li class="nav-item"><a class="nav-link text-light" href="{% url 'services' %}">Dịch Vụ</a></li>
+                <li class="nav-item"><a class="nav-link text-light" >Về Chúng Tôi</a></li>
+                <li class="nav-item"><a class="nav-link text-light" >Đặt Lịch</a></li>
+                <li class="nav-item"><a class="nav-link text-light" >Khiếu Nại</a></li>
+            </ul>
+            <a href="#" class="nav-link me-3"><i class="ri-shopping-cart-line" style="font-size: 1.5rem;"></i></a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'admin_login' %}" class="btn btn-outline-red me-3">ĐĂNG NHẬP</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+        </div>
+    </div>
+    {% endblock header %}
+</nav>
+ <main class="pt-5">
+{% block content %}
+
+    <section class="home wow flash" id="home">
+        {% block home_section %}
+        <div class="container">
+            <h1 class="wow slideInLeft" data-wow-delay="1s">It's <span>gym</span> time. Let's go</h1>
+            <h1 class="wow slideInRight" data-wow-delay="1s">We are ready to <span>fit you</span></h1>
+        </div>
+        <a href="#about" class="go-down">
+            <i class="fa fa-angle-down" aria-hidden="true"></i>
+        </a>
+        {% endblock home_section %}
+    </section>
+    <section class="about" id="about">
+        {% block about_section %}
+        <div class="container">
+            <div class="content">
+                <div class="box wow bounceInUp">
+                    <div class="inner">
+                        <div class="img">
+                            <img src="{% static 'images/about1.jpg' %}" alt="about" />
+                        </div>
+                        <div class="text">
+                            <h4>GYM</h4>
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="box wow bounceInUp" data-wow-delay="0.2s">
+                    <div class="inner">
+                        <div class="img">
+                            <img src="{% static 'images/about2.jpg' %}" alt="about" />
+                        </div>
+                        <div class="text">
+                            <h4>DANCE</h4>
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="box wow bounceInUp" data-wow-delay="0.4s">
+                    <div class="inner">
+                        <div class="img">
+                            <img src="{% static 'images/about3.jpg' %}" alt="about" />
+                        </div>
+                        <div class="text">
+                            <h4>YOGA</h4>
+                            <p>...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock about_section %}
+    </section>
+    <section class="service" id="service">{% block service_section %}{% endblock service_section %}</section>
+    <section class="classes" id="classes">{% block classes_section %}{% endblock classes_section %}</section>
+    <section class="start-today">{% block start_today_section %}{% endblock start_today_section %}</section>
+    <section class="schedule" id="schedule">{% block schedule_section %}{% endblock schedule_section %}</section>
+    <section class="gallery" id="gallery">{% block gallery_section %}{% endblock gallery_section %}</section>
+    <section class="price-package" id="price">{% block price_section %}{% endblock price_section %}</section>
+    <section class="contact" id="contact">{% block contact_section %}{% endblock contact_section %}</section>
+
+{% endblock content %}
+</main>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="{% static 'js/wow.min.js' %}"></script>
+
+<script>
+    $(document).ready(function(){
+
+      // Xử lý Accordion của template cũ
+      $(".accordian-container").click(function(){
+        $(".accordian-container").children(".body").slideUp();
+        $(".accordian-container").removeClass("active")
+        $(".accordian-container").children(".head").children("span").removeClass("fa-angle-down").addClass("fa-angle-up")
+        $(this).children(".body").slideDown();
+        $(this).addClass("active")
+        $(this).children(".head").children("span").removeClass("fa-angle-up").addClass("fa-angle-down")
+      })
+
+      // Xử lý cuộn mượt (smooth scroll) của template cũ
+       $(".go-down").click(function(event){
+         if(this.hash !== ""){
+              event.preventDefault();
+              var hash=this.hash;
+              $('html,body').animate({
+                scrollTop:$(hash).offset().top
+              },800 , function(){
+                 window.location.hash=hash;
+              });
+         }
+      })
+    })
+
+    // Khởi tạo WOW.js
+    wow = new WOW({
+        animateClass: 'animated',
+        offset: 0,
+    });
+    wow.init();
+</script>
+{% block extra_js %}{% endblock extra_js %}
+</body>
+</html>
