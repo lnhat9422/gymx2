@@ -1,218 +1,200 @@
 {% extends "base.html" %}
 {% load static %}
 
+
 {% block title %}Dịch Vụ - Gym, Yoga, Dance{% endblock title %}
 
+
 {% block content %}
-    <section class="home hero-section wow flash" id="service-hero"
-             style="background-color: #2c2c2c; min-height: 400px; padding-top: 100px;">
-        <div class="container text-center text-light" style="padding: 50px 0;">
-            <h1 class="wow slideInLeft" data-wow-delay="0.5s"
-                style="font-size: 3rem; font-weight: 700;">Khám Phá Các Dịch Vụ Của Chúng Tôi</h1>
-            <p class="wow slideInRight" data-wow-delay="0.7s"
-                style="font-size: 1.2rem;">Mang đến cho bạn trải nghiệm tập luyện chuyên nghiệp và hiệu quả.</p>
+   <section class="home hero-section wow flash" id="service-hero"
+            style="background-color: #2c2c2c; min-height: 400px; padding-top: 100px;">
+       <div class="container text-center text-light" style="padding: 50px 0;">
+           <h1 class="wow slideInLeft" data-wow-delay="0.5s"
+               style="font-size: 3rem; font-weight: 700;">Khám Phá Các Dịch Vụ Của Chúng Tôi</h1>
+           <p class="wow slideInRight" data-wow-delay="0.7s"
+               style="font-size: 1.2rem;">Mang đến cho bạn trải nghiệm tập luyện chuyên nghiệp và hiệu quả.</p>
+       </div>
+   </section>
+
+
+   <section class="service-details py-5" id="service-details">
+       <div class="container">
+
+
+      {% for s in services %}
+<div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.2s">
+
+    {% if forloop.counter|divisibleby:"2" %}
+        <!-- ẢNH BÊN TRÁI - NỘI DUNG BÊN PHẢI -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img src="{{ s.image.url }}" alt="{{ s.name }}" class="img-fluid rounded shadow-lg">
         </div>
-    </section>
+        <div class="col-lg-6">
+            <h2 class="fw-bold text-danger">{{ s.name }}</h2>
+            <h3 class="mb-4">{{ s.subtitle }}</h3>
+            <p class="lead">{{ s.description }}</p>
 
-    <section class="service-details py-5" id="service-details">
-        <div class="container">
+            <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
+        </div>
+    {% else %}
+        <!-- NỘI DUNG BÊN TRÁI - ẢNH BÊN PHẢI -->
+        <div class="col-lg-6">
+            <h2 class="fw-bold text-danger">{{ s.name }}</h2>
+            <h3 class="mb-4">{{ s.subtitle }}</h3>
+            <p class="lead">{{ s.description }}</p>
 
-            <!-- ==== GYM ==== -->
-            <div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.2s">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="fw-bold text-danger">PHÒNG TẬP GYM</h2>
-                    <h3 class="mb-4">Tiêu chuẩn 5 sao hiện đại</h3>
-                    <p class="lead">
-                        GymX là thương hiệu phòng tập <strong>chuẩn 5 sao</strong> với
-                        <strong>thiết bị luyện tập hiện đại</strong> nằm ở trung tâm Hà Nội.
-                        Chúng tôi xây dựng môi trường tập luyện chuyên nghiệp, hiện đại với đầy đủ các dịch vụ cần thiết.
-                    </p>
-                    <p>Với phương châm "<strong>Tập luyện - Sức khỏe - Niềm vui</strong>",
-                        GymX cam kết kiến tạo vóc dáng hoàn hảo và mang lại cảm giác khác biệt cho bạn.</p>
+            <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
+        </div>
+        <div class="col-lg-6">
+          {% if s.image %}
+    <img src="{{ s.image.url }}" alt="{{ s.name }}" class="img-fluid rounded shadow-lg">
+{% else %}
+    <img src="{% static 'images/default_service.jpg' %}" alt="{{ s.name }}" class="img-fluid rounded shadow-lg">
+{% endif %}
 
-                    <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
-                </div>
-                <div class="col-lg-6">
-                    <img src="{% static 'images/gym.jpg' %}" alt="Phòng tập Gym hiện đại"
-                         class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-
-            <hr class="my-5">
-
-            <!-- ==== YOGA ==== -->
-            <div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.4s">
-                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
-                    <h2 class="fw-bold text-danger">CÁC LỚP YOGA</h2>
-                    <h3 class="mb-4">Cân bằng tâm trí và cơ thể</h3>
-                    <p class="lead">
-                        Các lớp Yoga của chúng tôi được thiết kế để giúp bạn đạt được sự
-                        <strong>cân bằng hoàn hảo</strong> giữa thể chất và tinh thần.
-                        Tập luyện Yoga thường xuyên giúp <strong>tăng cường sự dẻo dai</strong>,
-                        cải thiện tư thế và giảm căng thẳng hiệu quả.
-                    </p>
-                    <p>Huấn luyện viên chuyên nghiệp sẽ hướng dẫn bạn từ cơ bản đến nâng cao,
-                        đảm bảo mọi động tác đều chính xác và an toàn.</p>
-
-                    <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <img src="{% static 'images/yoga.jpg' %}" alt="Lớp Yoga"
-                         class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-
-            <hr class="my-5">
-
-            <!-- ==== DANCE ==== -->
-            <div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.6s">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="fw-bold text-danger">CÁC LỚP DANCE</h2>
-                    <h3 class="mb-4">Giải phóng năng lượng cùng âm nhạc</h3>
-                    <p class="lead">
-                        Đừng chỉ tập luyện, hãy <strong>nhảy múa</strong>! Các lớp Dance đa dạng
-                        như Zumba, Sexy Dance, K-Pop Dance Cover... là cách tuyệt vời để bạn
-                        <strong>đốt cháy calo</strong>, cải thiện vóc dáng và giải tỏa căng thẳng.
-                    </p>
-                    <p>Phù hợp với mọi cấp độ, các giáo viên nhiệt huyết sẽ truyền cảm hứng cho bạn.</p>
-
-                    <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
-                </div>
-                <div class="col-lg-6">
-                    <img src="{% static 'images/dance.jpg' %}" alt="Lớp Dance sôi động"
-                         class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
 
         </div>
-    </section>
+    {% endif %}
 
-    <!-- ===== CSS ĐỎ ĐỒNG BỘ ===== -->
-    <style>
-        .btn-experience {
-            background-color: #dc3545;           /* đỏ Bootstrap */
-            color: #fff;
-            font-weight: 600;
-            padding: 12px 30px;
-            border-radius: 50px;
-            border: none;
-            transition: all .3s ease;
-            text-transform: uppercase;
-            font-size: .95rem;
-            letter-spacing: .5px;
-        }
-        .btn-experience:hover {
-            background-color: #c82333;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(220, 53, 69, .3);
-            color: #fff;
-        }
-        .text-danger { color: #dc3545 !important; }
-    </style>
+</div>
+
+<hr class="my-5">
+{% endfor %}
+
+
+
+   <!-- ===== CSS ĐỎ ĐỒNG BỘ ===== -->
+   <style>
+       .btn-experience {
+           background-color: #dc3545;           /* đỏ Bootstrap */
+           color: #fff;
+           font-weight: 600;
+           padding: 12px 30px;
+           border-radius: 50px;
+           border: none;
+           transition: all .3s ease;
+           text-transform: uppercase;
+           font-size: .95rem;
+           letter-spacing: .5px;
+       }
+       .btn-experience:hover {
+           background-color: #c82333;
+           transform: translateY(-2px);
+           box-shadow: 0 4px 12px rgba(220, 53, 69, .3);
+           color: #fff;
+       }
+       .text-danger { color: #dc3545 !important; }
+   </style>
 <!-- ===== TIỆN ÍCH 5 SAO ===== -->
 <section class="facilities py-5 bg-light" id="facilities">
-    <div class="container">
-        <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.2s">
-            <h2 class="fw-bold text-danger display-5">TIỆN ÍCH 5 SAO</h2>
-            <p class="lead text-muted col-lg-8 mx-auto">
-                Sử dụng tất cả dịch vụ & tiện ích cao cấp sau tập luyện mà không phát sinh phí,
-                mang đến cho khách hàng những trải nghiệm tập luyện tuyệt vời, giúp khách hàng đạt được
-                mong muốn trong quá trình tập luyện tại phòng tập <strong>GymX</strong>.
-            </p>
-        </div>
+   <div class="container">
+       <div class="text-center mb-5 wow fadeIn" data-wow-delay="0.2s">
+           <h2 class="fw-bold text-danger display-5">TIỆN ÍCH 5 SAO</h2>
+           <p class="lead text-muted col-lg-8 mx-auto">
+               Sử dụng tất cả dịch vụ & tiện ích cao cấp sau tập luyện mà không phát sinh phí,
+               mang đến cho khách hàng những trải nghiệm tập luyện tuyệt vời, giúp khách hàng đạt được
+               mong muốn trong quá trình tập luyện tại phòng tập <strong>GymX</strong>.
+           </p>
+       </div>
 
-        <div class="row g-4">
-            <!-- Tiện ích 1: Phòng Spa -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
-                    <img src="{% static 'images/pgym.jpg' %}" alt="Phòng Spa" class="facility-img mb-3">
-                    <h5 class="fw-bold text-danger">Phòng Spa</h5>
-                    <p class="text-muted small">
-                        Yên tĩnh và thư giãn, lý tưởng để phục hồi sau mỗi buổi tập.
-                    </p>
-                </div>
-            </div>
 
-            <!-- Tiện ích 2: Tủ đồ -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
-                    <img src="{% static 'images/lock.jpg' %}" alt="Tủ đồ" class="facility-img mb-3">
-                    <h5 class="fw-bold text-danger">Tủ đồ</h5>
-                    <p class="text-muted small">
-                        Trang bị khóa thông minh, bảo vệ an toàn cho đồ đạc cá nhân của bạn.
-                    </p>
-                </div>
-            </div>
+       <div class="row g-4">
+           <!-- Tiện ích 1: Phòng Spa -->
+           <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+               <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                   <img src="{% static 'images/pgym.jpg' %}" alt="Phòng Spa" class="facility-img mb-3">
+                   <h5 class="fw-bold text-danger">Phòng Spa</h5>
+                   <p class="text-muted small">
+                       Yên tĩnh và thư giãn, lý tưởng để phục hồi sau mỗi buổi tập.
+                   </p>
+               </div>
+           </div>
 
-            <!-- Tiện ích 3: Sảnh chờ -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
-                    <img src="{% static 'images/letan.jpg' %}" alt="Sảnh chờ" class="facility-img mb-3">
-                    <h5 class="fw-bold text-danger">Sảnh chờ</h5>
-                    <p class="text-muted small">
-                        Sang trọng và thoải mái, nơi lý tưởng để nghỉ ngơi trước hoặc sau buổi tập.
-                    </p>
-                </div>
-            </div>
 
-            <!-- Tiện ích 4: Xông hơi -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
-                    <img src="{% static 'images/gym.jpg' %}" alt="Xông hơi" class="facility-img mb-3">
-                    <h5 class="fw-bold text-danger">Xông hơi</h5>
-                    <p class="text-muted small">
-                        Loại bỏ độc tố, thư giãn cơ bắp, tái tạo năng lượng sau tập.
-                    </p>
-                </div>
-            </div>
+           <!-- Tiện ích 2: Tủ đồ -->
+           <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.4s">
+               <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                   <img src="{% static 'images/lock.jpg' %}" alt="Tủ đồ" class="facility-img mb-3">
+                   <h5 class="fw-bold text-danger">Tủ đồ</h5>
+                   <p class="text-muted small">
+                       Trang bị khóa thông minh, bảo vệ an toàn cho đồ đạc cá nhân của bạn.
+                   </p>
+               </div>
+           </div>
 
-            <!-- Tiện ích 5: Quầy lễ tân -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
-                    <img src="{% static 'images/letan.jpg' %}" alt="Quầy lễ tân" class="facility-img mb-3">
-                    <h5 class="fw-bold text-danger">Quầy lễ tân</h5>
-                    <p class="text-muted small">
-                        Hỗ trợ 24/7, check-in nhanh, tư vấn chuyên nghiệp.
-                    </p>
-                </div>
-            </div>
 
-            <!-- Tiện ích 6: Khu vực nước uống -->
-            <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.8s">
-                <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
-                    <img src="{% static 'images/nuoc.jpg' %}" alt="Nước uống" class="facility-img mb-3">
-                    <h5 class="fw-bold text-danger">Nước uống & Khăn</h5>
-                    <p class="text-muted small">
-                        Miễn phí nước ion kiềm, khăn sạch, luôn sẵn sàng cho bạn.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+           <!-- Tiện ích 3: Sảnh chờ -->
+           <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+               <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                   <img src="{% static 'images/letan.jpg' %}" alt="Sảnh chờ" class="facility-img mb-3">
+                   <h5 class="fw-bold text-danger">Sảnh chờ</h5>
+                   <p class="text-muted small">
+                       Sang trọng và thoải mái, nơi lý tưởng để nghỉ ngơi trước hoặc sau buổi tập.
+                   </p>
+               </div>
+           </div>
+
+
+           <!-- Tiện ích 4: Xông hơi -->
+           <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.6s">
+               <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                   <img src="{% static 'images/gym.jpg' %}" alt="Xông hơi" class="facility-img mb-3">
+                   <h5 class="fw-bold text-danger">Xông hơi</h5>
+                   <p class="text-muted small">
+                       Loại bỏ độc tố, thư giãn cơ bắp, tái tạo năng lượng sau tập.
+                   </p>
+               </div>
+           </div>
+
+
+           <!-- Tiện ích 5: Quầy lễ tân -->
+           <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+               <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                   <img src="{% static 'images/letan.jpg' %}" alt="Quầy lễ tân" class="facility-img mb-3">
+                   <h5 class="fw-bold text-danger">Quầy lễ tân</h5>
+                   <p class="text-muted small">
+                       Hỗ trợ 24/7, check-in nhanh, tư vấn chuyên nghiệp.
+                   </p>
+               </div>
+           </div>
+
+
+           <!-- Tiện ích 6: Khu vực nước uống -->
+           <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.8s">
+               <div class="facility-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+                   <img src="{% static 'images/nuoc.jpg' %}" alt="Nước uống" class="facility-img mb-3">
+                   <h5 class="fw-bold text-danger">Nước uống & Khăn</h5>
+                   <p class="text-muted small">
+                       Miễn phí nước ion kiềm, khăn sạch, luôn sẵn sàng cho bạn.
+                   </p>
+               </div>
+           </div>
+       </div>
+   </div>
 </section>
 <style>
-    .facility-img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 16px;
-        transition: transform 0.3s ease;
-    }
-    .facility-card:hover .facility-img {
-        transform: scale(1.05);
-    }
-    .facility-card {
-        transition: all 0.3s ease;
-        border: 1px solid #eee;
-    }
-    .facility-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 25px rgba(220, 53, 69, 0.15) !important;
-        border-color: #dc3545;
-    }
-    .facility-card h5 {
-        font-size: 1.1rem;
-        margin-bottom: 0.75rem;
-    }
+   .facility-img {
+       width: 100%;
+       height: 180px;
+       object-fit: cover;
+       border-radius: 16px;
+       transition: transform 0.3s ease;
+   }
+   .facility-card:hover .facility-img {
+       transform: scale(1.05);
+   }
+   .facility-card {
+       transition: all 0.3s ease;
+       border: 1px solid #eee;
+   }
+   .facility-card:hover {
+       transform: translateY(-8px);
+       box-shadow: 0 10px 25px rgba(220, 53, 69, 0.15) !important;
+       border-color: #dc3545;
+   }
+   .facility-card h5 {
+       font-size: 1.1rem;
+       margin-bottom: 0.75rem;
+   }
 </style>
 {% endblock content %}

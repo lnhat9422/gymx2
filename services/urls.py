@@ -4,7 +4,6 @@ from . import views
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', views.service_view, name='services'),
-
     path('dich-vu/admin/', views.admin_login, name='admin_login'),  # <-- Đăng nhập tùy chỉnh
 
     # 2. Trang Đăng xuất

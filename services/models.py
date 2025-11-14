@@ -37,11 +37,24 @@ class Service(models.Model):
 
     # Thêm trường này nếu bạn muốn hiển thị ảnh đại diện cho dịch vụ trong quản lý
     image = models.ImageField(
-        upload_to='service_images/',
+        upload_to='service/',
         verbose_name="Ảnh đại diện",
         null=True,
         blank=True
     )
+    STATUS_CHOICES = (
+        ('draft', 'Bản nháp (Ẩn)'),
+        ('published', 'Công khai (Hiện)'),
+        ('archived', 'Lưu trữ'),
+    )
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='draft',  # Mặc định là Bản nháp
+        verbose_name='Trạng thái hiển thị'
+    )
+    # Thêm trường order để sắp xếp (Tùy chọn)
+    display_order = models.IntegerField(default=0, verbose_name='Thứ tự hiển thị')
 
     class Meta:
         verbose_name = "Dịch vụ"
@@ -50,3 +63,4 @@ class Service(models.Model):
 
     def __str__(self):
         return self.name
+
