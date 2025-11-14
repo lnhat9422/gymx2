@@ -17,75 +17,42 @@
     <section class="service-details py-5" id="service-details">
         <div class="container">
 
-            <!-- ==== GYM ==== -->
-            <div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.2s">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="fw-bold text-danger">PHÒNG TẬP GYM</h2>
-                    <h3 class="mb-4">Tiêu chuẩn 5 sao hiện đại</h3>
-                    <p class="lead">
-                        GymX là thương hiệu phòng tập <strong>chuẩn 5 sao</strong> với
-                        <strong>thiết bị luyện tập hiện đại</strong> nằm ở trung tâm Hà Nội.
-                        Chúng tôi xây dựng môi trường tập luyện chuyên nghiệp, hiện đại với đầy đủ các dịch vụ cần thiết.
-                    </p>
-                    <p>Với phương châm "<strong>Tập luyện - Sức khỏe - Niềm vui</strong>",
-                        GymX cam kết kiến tạo vóc dáng hoàn hảo và mang lại cảm giác khác biệt cho bạn.</p>
-
-                    <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
-                </div>
-                <div class="col-lg-6">
-                    <img src="{% static 'images/gym.jpg' %}" alt="Phòng tập Gym hiện đại"
-                         class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-
-            <hr class="my-5">
-
-            <!-- ==== YOGA ==== -->
-            <div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.4s">
-                <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
-                    <h2 class="fw-bold text-danger">CÁC LỚP YOGA</h2>
-                    <h3 class="mb-4">Cân bằng tâm trí và cơ thể</h3>
-                    <p class="lead">
-                        Các lớp Yoga của chúng tôi được thiết kế để giúp bạn đạt được sự
-                        <strong>cân bằng hoàn hảo</strong> giữa thể chất và tinh thần.
-                        Tập luyện Yoga thường xuyên giúp <strong>tăng cường sự dẻo dai</strong>,
-                        cải thiện tư thế và giảm căng thẳng hiệu quả.
-                    </p>
-                    <p>Huấn luyện viên chuyên nghiệp sẽ hướng dẫn bạn từ cơ bản đến nâng cao,
-                        đảm bảo mọi động tác đều chính xác và an toàn.</p>
-
-                    <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <img src="{% static 'images/yoga.jpg' %}" alt="Lớp Yoga"
-                         class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-
-            <hr class="my-5">
-
-            <!-- ==== DANCE ==== -->
-            <div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.6s">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="fw-bold text-danger">CÁC LỚP DANCE</h2>
-                    <h3 class="mb-4">Giải phóng năng lượng cùng âm nhạc</h3>
-                    <p class="lead">
-                        Đừng chỉ tập luyện, hãy <strong>nhảy múa</strong>! Các lớp Dance đa dạng
-                        như Zumba, Sexy Dance, K-Pop Dance Cover... là cách tuyệt vời để bạn
-                        <strong>đốt cháy calo</strong>, cải thiện vóc dáng và giải tỏa căng thẳng.
-                    </p>
-                    <p>Phù hợp với mọi cấp độ, các giáo viên nhiệt huyết sẽ truyền cảm hứng cho bạn.</p>
-
-                    <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
-                </div>
-                <div class="col-lg-6">
-                    <img src="{% static 'images/dance.jpg' %}" alt="Lớp Dance sôi động"
-                         class="img-fluid rounded shadow-lg">
-                </div>
-            </div>
-
+   {% for s in services %}
+<div class="row align-items-center service-item my-5 py-3 wow fadeIn" data-wow-delay="0.2s">
+    {% if forloop.counter|divisibleby:"2" %}
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            {% if s.image %}
+                <img src="{{ s.image.url }}" alt="{{ s.name }}" class="img-fluid rounded shadow-lg">
+            {% else %}
+                <img src="{% static 'images/default_service.jpg' %}" alt="{{ s.name }}" class="img-fluid rounded shadow-lg">
+            {% endif %}
         </div>
-    </section>
+        <div class="col-lg-6">
+            <h2 class="fw-bold text-danger">{{ s.name }}</h2>
+            <h3 class="mb-4">{{ s.subtitle }}</h3>
+            <p class="lead">{{ s.description }}</p>
+            <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
+        </div>
+    {% else %}
+        <div class="col-lg-6">
+            <h2 class="fw-bold text-danger">{{ s.name }}</h2>
+            <h3 class="mb-4">{{ s.subtitle }}</h3>
+            <p class="lead">{{ s.description }}</p>
+            <a href="#" class="btn btn-experience mt-3">Trải Nghiệm Miễn Phí</a>
+        </div>
+        <div class="col-lg-6">
+            {% if s.image %}
+                <img src="{{ s.image.url }}" alt="{{ s.name }}" class="img-fluid rounded shadow-lg">
+            {% else %}
+                <img src="{% static 'images/default_service.jpg' %}" alt="{{ s.name }}" class="img-fluid rounded shadow-lg">
+            {% endif %}
+        </div>
+    {% endif %}
+</div>
+<hr class="my-5">
+{% endfor %}
+
+
 
     <!-- ===== CSS ĐỎ ĐỒNG BỘ ===== -->
     <style>

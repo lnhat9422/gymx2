@@ -9,8 +9,10 @@ from .forms import ServiceForm
 from django.contrib.auth.forms import AuthenticationForm # Dùng form đăng nhập mặc định
 def service_view(request):
     """Render trang giới thiệu các dịch vụ (Gym, Yoga, Dance)."""
+    services = Service.objects.filter(status='published')
     # Bạn có thể thêm context data nếu cần thiết
     context = {
+        'services': services,
         'page_title': 'Dịch Vụ Của GymX'
     }
     return render(request, 'services\service_type_detail.html', context)

@@ -19,6 +19,11 @@ class ServiceType(models.Model):
         return reverse('services:type_detail', args=[self.slug])
 
 class Service(models.Model):
+    STATUS_CHOICES = (
+        ('draft', 'Bản nháp (Ẩn)'),
+        ('published', 'Công khai (Hiện)'),
+        ('archived', 'Lưu trữ'),
+    )
     # MaDV tự động tạo (Primary Key)
     service_id = models.AutoField(
         primary_key=True,
@@ -42,7 +47,13 @@ class Service(models.Model):
         null=True,
         blank=True
     )
-
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='draft',  # Mặc định là Bản nháp
+        verbose_name='Trạng thái hiển thị',
+    )
+    display_order = models.IntegerField(default=0, verbose_name='Thứ tự hiển thị')
     class Meta:
         verbose_name = "Dịch vụ"
         verbose_name_plural = "Dịch vụ"
